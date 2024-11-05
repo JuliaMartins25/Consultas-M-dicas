@@ -1,5 +1,7 @@
 CREATE DATABASE clinica;
 
+\c clinica
+
 CREATE TABLE pacientes(
     id_paciente SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -11,7 +13,7 @@ SELECT * FROM pacientes;
 CREATE TABLE medicos(
     id_medico SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    especialidade VARCHAR(100) NOT NULL,
+    especialidade VARCHAR(100) NOT NULL
 );
 
 SELECT * FROM medicos;
@@ -39,7 +41,7 @@ CREATE TABLE consultas(
     id_consulta SERIAL PRIMARY KEY,
     id_paciente INT NOT NULL,
     id_medico INT NOT NULL,
-    tipo_consulta VARCHAR(100) NOT NULL,    
+    tipo_consulta VARCHAR(100) ,    
     data_consulta DATE,
     CONSTRAINT fk_paciente FOREIGN KEY (id_paciente) REFERENCES pacientes(id_paciente),
     CONSTRAINT fk_medico FOREIGN KEY (id_medico) REFERENCES medicos(id_medico)
@@ -47,12 +49,20 @@ CREATE TABLE consultas(
 
 SELECT * FROM consultas;
 
-INSERT INTO consultas (id_paciente, id_medico, tipo_consulta) VALUES
-(5, 1, 'Cardiologista'),
-(1, 4, 'Neurologista'),
-(2, 3, 'Homeopata'),
-(3, 2, 'Dermatologista'),
-(4, 5, 'Ortopedista');
+INSERT INTO consultas (id_paciente, id_medico, tipo_consulta, data_consulta) VALUES
+(5, 1, 'Cardiologista', '2024-10-10'),
+(2, 3, 'Homeopata', '2024-10-25'),
+(3, 2, 'Dermatologista','2024-11-01'),
+(1, 4, 'Neurologista', '2024-11-08');
+
+INSERT INTO consultas (id_paciente, id_medico) VALUES
+(4, 5);
+
+
+
+
+
+
 
 
 

@@ -58,7 +58,15 @@ INSERT INTO consultas (id_paciente, id_medico, tipo_consulta, data_consulta) VAL
 INSERT INTO consultas (id_paciente, id_medico) VALUES
 (4, 5);
 
-
+SELECT
+p.nome AS nome_paciente,
+m.nome AS nome_medico,
+c.tipo_consulta AS tipo_consulta,
+c.data_consulta AS data_consulta
+FROM consultas c
+INNER JOIN pacientes p ON c.id_paciente = p.id_paciente
+INNER JOIN medicos m ON c.id_medico = m.id_medico
+WHERE c.data_consulta < '2024-11-06';
 
 
 

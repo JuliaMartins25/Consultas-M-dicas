@@ -68,6 +68,14 @@ INNER JOIN pacientes p ON c.id_paciente = p.id_paciente
 INNER JOIN medicos m ON c.id_medico = m.id_medico
 WHERE c.data_consulta < '2024-11-06';
 
+SELECT
+p.nome AS nome_paciente,
+c.tipo_consulta AS tipo_consulta,
+c.data_consulta AS data_consulta
+FROM consultas c
+INNER JOIN pacientes p ON c.id_paciente = p.id_paciente
+INNER JOIN medicos m ON c.id_medico = m.id_medico
+WHERE c.data_consulta IS NULL;
 
 
 
